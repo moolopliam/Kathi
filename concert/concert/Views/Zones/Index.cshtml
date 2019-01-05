@@ -1,0 +1,42 @@
+﻿@model IEnumerable<concert.Models.Zone>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout - Copy.cshtml";
+}
+
+<h2 style="color:blueviolet">โซน</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameZone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameZone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IDZone }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IDZone }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.IDZone },
+                   new { onclick = "return confirm('คุณจะลบใช่มั้ย ?')" })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,112 @@
+﻿@model concert.Models.Order
+@using concert.Models;
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>รายการ</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("1")
+        </th>
+        <th>
+            @Html.DisplayName("2")
+        </th>
+        <th>
+            @Html.DisplayName("3")
+        </th>
+        <th>
+            @Html.DisplayName("4")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in TempData["gg"] as List<Booking>)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Show.NameShow)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Show.Band.NameBand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zone.NameZone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zone.Price)
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@using (Html.BeginForm("Edit", "Orders", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>จำนวนที่ต้องชำระ</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.OrderID)
+        @Html.HiddenFor(Model => Model.O_IDUSer)
+        @Html.HiddenFor(Model => Model.O_SatatusID)
+        @Html.HiddenFor(Model => Model.O_Date)
+
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.O_IDUSer, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.O_IDUSer, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.O_IDUSer, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.O_SatatusID, "O_SatatusID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("O_SatatusID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.O_SatatusID, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.O_TotalPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.O_TotalPrice, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                @Html.ValidationMessageFor(model => model.O_TotalPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.LabelFor(model => model.O_IMG, "อัพโหลดภาพการชำระเงิน", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.pic, new { htmlAttributes = new { @class = "form-control" }, @type = "file" })
+            @Html.ValidationMessageFor(model => model.O_IMG, "", new { @class = "text-danger" })
+        </div>
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.O_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.O_Date, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.O_Date, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

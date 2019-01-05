@@ -1,0 +1,83 @@
+﻿@model IEnumerable<concert.Models.Booking>
+
+@{
+    ViewBag.Title = "BagCad";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BagCad</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IDCus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumCard)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateBooking)
+            </th>
+            <th>
+                @Html.DisplayName("ราคาต่อหน่วย")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order.O_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Show.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Zone.NameZone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDCus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumCard)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateBooking)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zone.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.O_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Show.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zone.NameZone)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.IDBooking }) |*@
+                    @Html.ActionLink("Details", "Details", new { id = item.IDBooking }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IDBooking })
+                </td>
+            </tr>
+
+        </tbody>
+    }
+    <tfoot>
+        <tr>
+            <td></td>
+            <td>@TempData["num"].ToString()</td>
+            <td></td>
+            <td>@TempData["total"].ToString()</td>
+
+        </tr>
+    </tfoot>
+</table>

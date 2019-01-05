@@ -1,0 +1,25 @@
+﻿@using (Html.BeginForm("SearchAct", "Home", FormMethod.Post))
+{
+    
+        ViewBag.Title = "Search";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    
+
+    <div>
+        Last Name:<br>
+        <input type="text" id="nameToFind" name="nameToFind">
+
+        <input type="submit" id="submitId" value="submit" />
+
+    </div>
+
+}
+
+@{
+    if (ViewBag.SearchKey != null)
+    {
+        <span>
+            Search Key: @ViewBag.SearchKey
+        </span>
+    }
+}

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<concert.Models.District>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout - Copy.cshtml";
+}
+
+<h2 style="color:blueviolet">ชื่ออำเภอ</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameDistrict)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Province.NameProvince)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameDistrict)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Province.NameProvince)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDDistrict }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDDistrict }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDDistrict },
+           new { onclick = "return confirm('คุณจะลบใช่มั้ย ?')" })
+        </td>
+    </tr>
+}
+
+</table>

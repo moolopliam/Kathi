@@ -1,0 +1,91 @@
+﻿@model IEnumerable<concert.Models.Show>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>ตารางการแสดง</h2>
+<br />
+
+<div>
+    <form class="form-inline my-2 my-lg-0" action="@Url.Action("Search","Shows")">
+        <input class="form-control mr-sm-2" type="text" placeholder="กรุณากรอกชื่อวงดนตรี" name="txtName">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit" style="background-color:blue">ค้นหา</button>
+    </form>
+</div>
+<br />
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+@*<div class="row tm-albums-container grid">*@
+
+    @*<div class="col-sm-6 col-12 col-md-6 col-lg-3 col-xl-3 tm-album-col">
+            <figure class="effect-sadie" >
+                @if (item.Picture != null)
+                {
+                    <img src="data:image/png;base64,@Convert.ToBase64String(item.Picture)" @Html.ActionLink("Details", "Details")>
+                }
+
+                <figcaption>
+                    <h2>
+                        @Html.DisplayFor(modelItem => item.Band.NameBand)
+                    </h2>
+                    <p>@Html.DisplayFor(modelItem => item.Place.NamePlace) </p>
+                    แสดงวันที่ @Html.DisplayFor(modelItem => item.Date)
+
+                </figcaption>
+
+            </figure>
+        </div>
+        @*<button class="btn btn-default" href="@Url.Action("ShowDetail","Shows",new {id = item.IDShow })">uyjyuj</button>*@
+    @*<div class="col-sm-12">
+            @Html.ActionLink("Edit", "Edit", new { id = item.IDShow }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IDShow }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDShow },
+           new { onclick = "return confirm('คุณจะลบใช่มั้ย ?')" })
+        </div>
+        <button class="btn btn-default" onclick="location.href='@Url.Action("ShowDetail","Shows")">uyjyuj</button>*@
+
+
+@*</div>*@
+<div class="container">
+    <div class="row text-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card">
+                    @if (item.Picture != null)
+                    {
+                        <img class="card-img-top" src="data:image/png;base64,@Convert.ToBase64String(item.Picture)"  height="250px">
+                    }
+                    @*<img class="card-img-top" src="http://placehold.it/500x325" alt="">*@
+                    <div class="card-body">
+                        <h4 class="card-title">@Html.DisplayFor(modelItem => item.Band.NameBand)</h4>
+                        <p class="card-text">
+                            @Html.DisplayFor(modelItem => item.Place.NamePlace)
+                            
+                        </p>
+                        <p>
+                            แสดงวันที่ @Html.DisplayFor(modelItem => item.Date)
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="@Url.Action("ShowDetail","Shows",new { id = item.IDShow})" class="btn btn-primary" >รายละเอียด</a>
+                    </div>
+                </div>
+            </div>
+    }
+        </div>
+    </div>
+    @section Scripts{
+        @Scripts.Render("~bundles/jqeryval")
+        @*<script src="~/Scripts/bootstrap-editable.min.js"></script>
+            <script src="~/Scripts/jquery.dataTables.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $('#myTable').DataTable();
+                });
+            </script>*@
+    }

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<concert.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout - Copy.cshtml";
+}
+
+<h2 style="color:brown">ประวัติลูกค้า</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameCus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Card)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title.NameTi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameCus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Card)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title.NameTi)
+        </td>
+        <td>
+          
+            
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDCus },
+               new { onclick = "return confirm('คุณจะลบใช่มั้ย ?')" })
+        </td>
+    </tr>
+}
+
+</table>

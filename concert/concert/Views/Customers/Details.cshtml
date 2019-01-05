@@ -1,0 +1,51 @@
+﻿@model concert.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameCus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameCus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Card)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Card)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title.NameTi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title.NameTi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDCus }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

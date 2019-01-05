@@ -1,0 +1,42 @@
+﻿@model IEnumerable<concert.Models.Band>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout - Copy.cshtml";
+}
+
+<h2 style="color:blueviolet">วงที่ทำการแสดง</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameBand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.NameCatgory)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameBand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.NameCatgory)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IDBand }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IDBand }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IDBand },
+               new { onclick = "return confirm('คุณจะลบใช่มั้ย ?')" })
+            </td>
+        </tr>
+    }
+
+</table>

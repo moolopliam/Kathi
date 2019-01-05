@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2c3e48301c51410e8dd95bc2a2cc151f" Name="Diagram1">
+        <EntityTypeShape EntityType="Concert5904Model.Band" Width="1.5" PointX="5.25" PointY="5.5" />
+        <EntityTypeShape EntityType="Concert5904Model.Booking" Width="1.5" PointX="9.75" PointY="1" />
+        <EntityTypeShape EntityType="Concert5904Model.Category" Width="1.5" PointX="3" PointY="5.75" />
+        <EntityTypeShape EntityType="Concert5904Model.District" Width="1.5" PointX="3" PointY="1.5" />
+        <EntityTypeShape EntityType="Concert5904Model.Order" Width="1.5" PointX="7.5" PointY="8.625" />
+        <EntityTypeShape EntityType="Concert5904Model.Place" Width="1.5" PointX="5.25" PointY="1.5" />
+        <EntityTypeShape EntityType="Concert5904Model.Province" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="Concert5904Model.Show" Width="1.5" PointX="7.5" PointY="1" />
+        <EntityTypeShape EntityType="Concert5904Model.StatusOrder" Width="1.5" PointX="5.25" PointY="9.125" />
+        <EntityTypeShape EntityType="Concert5904Model.User" Width="1.5" PointX="12" PointY="5.875" />
+        <EntityTypeShape EntityType="Concert5904Model.UserType" Width="1.5" PointX="9.75" PointY="6.125" />
+        <EntityTypeShape EntityType="Concert5904Model.Zone" Width="1.5" PointX="7.5" PointY="5.125" />
+        <AssociationConnector Association="Concert5904Model.FK_Band_Category" />
+        <AssociationConnector Association="Concert5904Model.FK_Show_Band" />
+        <AssociationConnector Association="Concert5904Model.FK_Booking_Order" />
+        <AssociationConnector Association="Concert5904Model.FK_Booking_Show" />
+        <AssociationConnector Association="Concert5904Model.FK_Booking_Zone" />
+        <AssociationConnector Association="Concert5904Model.FK_District_Province" />
+        <AssociationConnector Association="Concert5904Model.FK_Place_District" />
+        <AssociationConnector Association="Concert5904Model.FK_Order_StatusOrder" />
+        <AssociationConnector Association="Concert5904Model.FK_Show_Place" />
+        <AssociationConnector Association="Concert5904Model.FK_User_UserType" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

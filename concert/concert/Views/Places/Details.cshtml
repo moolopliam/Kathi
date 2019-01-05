@@ -1,0 +1,35 @@
+﻿@model concert.Models.Place
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout - Copy.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Place</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NamePlace)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamePlace)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.District.NameDistrict)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.District.NameDistrict)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDPlace }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

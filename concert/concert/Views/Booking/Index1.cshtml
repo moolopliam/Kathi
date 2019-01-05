@@ -1,0 +1,63 @@
+﻿@model IEnumerable<concert.Models.Booking>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout - Copy.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumCard)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateBooking)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.NameCus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Show.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zone.NameZone)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumCard)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateBooking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.NameCus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Show.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zone.NameZone)
+            </td>
+            <td>
+
+
+                @Html.ActionLink("Delete", "Delete", new { id=item.IDBooking },
+                   new { onclick = "return confirm('คุณจะลบใช่มั้ย ?')" })
+            </td>
+        </tr>
+    }
+
+</table>

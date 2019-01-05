@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Concert5904Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Concert5904Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Band" EntityType="Concert5904Model.Band" />
+    <EntitySet Name="Booking" EntityType="Concert5904Model.Booking" />
+    <EntitySet Name="Category" EntityType="Concert5904Model.Category" />
+    <EntitySet Name="Customer" EntityType="Concert5904Model.Customer" />
+    <EntitySet Name="District" EntityType="Concert5904Model.District" />
+    <EntitySet Name="Place" EntityType="Concert5904Model.Place" />
+    <EntitySet Name="Province" EntityType="Concert5904Model.Province" />
+    <EntitySet Name="Show" EntityType="Concert5904Model.Show" />
+    <EntitySet Name="Title" EntityType="Concert5904Model.Title" />
+    <EntitySet Name="User" EntityType="Concert5904Model.User" />
+    <EntitySet Name="UserType" EntityType="Concert5904Model.UserType" />
+    <EntitySet Name="Zone" EntityType="Concert5904Model.Zone" />
+    <AssociationSet Name="FK_Band_Category" Association="Concert5904Model.FK_Band_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Band" EntitySet="Band" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Show_Band" Association="Concert5904Model.FK_Show_Band">
+      <End Role="Band" EntitySet="Band" />
+      <End Role="Show" EntitySet="Show" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Customer" Association="Concert5904Model.FK_Booking_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Show" Association="Concert5904Model.FK_Booking_Show">
+      <End Role="Show" EntitySet="Show" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Zone" Association="Concert5904Model.FK_Booking_Zone">
+      <End Role="Zone" EntitySet="Zone" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_Title" Association="Concert5904Model.FK_Customer_Title">
+      <End Role="Title" EntitySet="Title" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_District_Province" Association="Concert5904Model.FK_District_Province">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="District" EntitySet="District" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_District" Association="Concert5904Model.FK_Place_District">
+      <End Role="District" EntitySet="District" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Show_Place" Association="Concert5904Model.FK_Show_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="Show" EntitySet="Show" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_UserType" Association="Concert5904Model.FK_User_UserType">
+      <End Role="UserType" EntitySet="UserType" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Band">
+    <Key>
+      <PropertyRef Name="IDBand" />
+    </Key>
+    <Property Name="IDBand" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameBand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDCategory" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="Concert5904Model.FK_Band_Category" FromRole="Band" ToRole="Category" />
+    <NavigationProperty Name="Show" Relationship="Concert5904Model.FK_Show_Band" FromRole="Band" ToRole="Show" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="IDBooking" />
+    </Key>
+    <Property Name="IDBooking" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDShow" Type="Int32" />
+    <Property Name="IDCus" Type="Int32" />
+    <Property Name="NumCard" Type="Int32" />
+    <Property Name="DateBooking" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IDZone" Type="Int32" />
+    <Property Name="Total" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="Concert5904Model.FK_Booking_Customer" FromRole="Booking" ToRole="Customer" />
+    <NavigationProperty Name="Show" Relationship="Concert5904Model.FK_Booking_Show" FromRole="Booking" ToRole="Show" />
+    <NavigationProperty Name="Zone" Relationship="Concert5904Model.FK_Booking_Zone" FromRole="Booking" ToRole="Zone" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="IDCategory" />
+    </Key>
+    <Property Name="IDCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameCatgory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Band" Relationship="Concert5904Model.FK_Band_Category" FromRole="Category" ToRole="Band" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="IDCus" />
+    </Key>
+    <Property Name="IDCus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameCus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDTitle" Type="Int32" />
+    <Property Name="Tel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Card" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Booking" Relationship="Concert5904Model.FK_Booking_Customer" FromRole="Customer" ToRole="Booking" />
+    <NavigationProperty Name="Title" Relationship="Concert5904Model.FK_Customer_Title" FromRole="Customer" ToRole="Title" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="IDDistrict" />
+    </Key>
+    <Property Name="IDDistrict" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameDistrict" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDProvince" Type="Int32" />
+    <NavigationProperty Name="Province" Relationship="Concert5904Model.FK_District_Province" FromRole="District" ToRole="Province" />
+    <NavigationProperty Name="Place" Relationship="Concert5904Model.FK_Place_District" FromRole="District" ToRole="Place" />
+  </EntityType>
+  <EntityType Name="Place">
+    <Key>
+      <PropertyRef Name="IDPlace" />
+    </Key>
+    <Property Name="IDPlace" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NamePlace" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDDistrict" Type="Int32" />
+    <NavigationProperty Name="District" Relationship="Concert5904Model.FK_Place_District" FromRole="Place" ToRole="District" />
+    <NavigationProperty Name="Show" Relationship="Concert5904Model.FK_Show_Place" FromRole="Place" ToRole="Show" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="IDProvince" />
+    </Key>
+    <Property Name="IDProvince" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="District" Relationship="Concert5904Model.FK_District_Province" FromRole="Province" ToRole="District" />
+  </EntityType>
+  <EntityType Name="Show">
+    <Key>
+      <PropertyRef Name="IDShow" />
+    </Key>
+    <Property Name="IDShow" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDBand" Type="Int32" />
+    <Property Name="IDPlace" Type="Int32" />
+    <Property Name="Date" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Time" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MatTicket" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="NameShow" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Band" Relationship="Concert5904Model.FK_Show_Band" FromRole="Show" ToRole="Band" />
+    <NavigationProperty Name="Booking" Relationship="Concert5904Model.FK_Booking_Show" FromRole="Show" ToRole="Booking" />
+    <NavigationProperty Name="Place" Relationship="Concert5904Model.FK_Show_Place" FromRole="Show" ToRole="Place" />
+  </EntityType>
+  <EntityType Name="Title">
+    <Key>
+      <PropertyRef Name="IDTitle" />
+    </Key>
+    <Property Name="IDTitle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameTi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customer" Relationship="Concert5904Model.FK_Customer_Title" FromRole="Title" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="IDUser" />
+    </Key>
+    <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDType" Type="Int32" />
+    <NavigationProperty Name="UserType" Relationship="Concert5904Model.FK_User_UserType" FromRole="User" ToRole="UserType" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="IDType" />
+    </Key>
+    <Property Name="IDType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="Concert5904Model.FK_User_UserType" FromRole="UserType" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Zone">
+    <Key>
+      <PropertyRef Name="IDZone" />
+    </Key>
+    <Property Name="IDZone" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameZone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Int32" />
+    <NavigationProperty Name="Booking" Relationship="Concert5904Model.FK_Booking_Zone" FromRole="Zone" ToRole="Booking" />
+  </EntityType>
+  <Association Name="FK_Band_Category">
+    <End Type="Concert5904Model.Category" Role="Category" Multiplicity="0..1" />
+    <End Type="Concert5904Model.Band" Role="Band" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="IDCategory" />
+      </Principal>
+      <Dependent Role="Band">
+        <PropertyRef Name="IDCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Show_Band">
+    <End Type="Concert5904Model.Band" Role="Band" Multiplicity="0..1" />
+    <End Type="Concert5904Model.Show" Role="Show" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Band">
+        <PropertyRef Name="IDBand" />
+      </Principal>
+      <Dependent Role="Show">
+        <PropertyRef Name="IDBand" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Customer">
+    <End Type="Concert5904Model.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="Concert5904Model.Booking" Role="Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="IDCus" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="IDCus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Show">
+    <End Type="Concert5904Model.Show" Role="Show" Multiplicity="0..1" />
+    <End Type="Concert5904Model.Booking" Role="Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Show">
+        <PropertyRef Name="IDShow" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="IDShow" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Zone">
+    <End Type="Concert5904Model.Zone" Role="Zone" Multiplicity="0..1" />
+    <End Type="Concert5904Model.Booking" Role="Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zone">
+        <PropertyRef Name="IDZone" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="IDZone" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_Title">
+    <End Type="Concert5904Model.Title" Role="Title" Multiplicity="0..1" />
+    <End Type="Concert5904Model.Customer" Role="Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Title">
+        <PropertyRef Name="IDTitle" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="IDTitle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_District_Province">
+    <End Type="Concert5904Model.Province" Role="Province" Multiplicity="0..1" />
+    <End Type="Concert5904Model.District" Role="District" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="IDProvince" />
+      </Principal>
+      <Dependent Role="District">
+        <PropertyRef Name="IDProvince" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Place_District">
+    <End Type="Concert5904Model.District" Role="District" Multiplicity="0..1" />
+    <End Type="Concert5904Model.Place" Role="Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="IDDistrict" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="IDDistrict" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Show_Place">
+    <End Type="Concert5904Model.Place" Role="Place" Multiplicity="0..1" />
+    <End Type="Concert5904Model.Show" Role="Show" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="IDPlace" />
+      </Principal>
+      <Dependent Role="Show">
+        <PropertyRef Name="IDPlace" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_UserType">
+    <End Type="Concert5904Model.UserType" Role="UserType" Multiplicity="0..1" />
+    <End Type="Concert5904Model.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="IDType" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IDType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Concert5904ModelStoreContainer" CdmEntityContainer="Concert5904Entities">
+    <EntitySetMapping Name="Band">
+      <EntityTypeMapping TypeName="Concert5904Model.Band">
+        <MappingFragment StoreEntitySet="Band">
+          <ScalarProperty Name="IDCategory" ColumnName="IDCategory" />
+          <ScalarProperty Name="NameBand" ColumnName="NameBand" />
+          <ScalarProperty Name="IDBand" ColumnName="IDBand" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Booking">
+      <EntityTypeMapping TypeName="Concert5904Model.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="IDZone" ColumnName="IDZone" />
+          <ScalarProperty Name="DateBooking" ColumnName="DateBooking" />
+          <ScalarProperty Name="NumCard" ColumnName="NumCard" />
+          <ScalarProperty Name="IDCus" ColumnName="IDCus" />
+          <ScalarProperty Name="IDShow" ColumnName="IDShow" />
+          <ScalarProperty Name="B_OrderID" ColumnName="B_OrderID" />
+          <ScalarProperty Name="IDBooking" ColumnName="IDBooking" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="Concert5904Model.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="NameCatgory" ColumnName="NameCatgory" />
+          <ScalarProperty Name="IDCategory" ColumnName="IDCategory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="District">
+      <EntityTypeMapping TypeName="Concert5904Model.District">
+        <MappingFragment StoreEntitySet="District">
+          <ScalarProperty Name="IDProvince" ColumnName="IDProvince" />
+          <ScalarProperty Name="NameDistrict" ColumnName="NameDistrict" />
+          <ScalarProperty Name="IDDistrict" ColumnName="IDDistrict" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="Concert5904Model.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="O_IMG" ColumnName="O_IMG" />
+          <ScalarProperty Name="O_Date" ColumnName="O_Date" />
+          <ScalarProperty Name="O_TotalPrice" ColumnName="O_TotalPrice" />
+          <ScalarProperty Name="O_SatatusID" ColumnName="O_SatatusID" />
+          <ScalarProperty Name="O_IDUSer" ColumnName="O_IDUSer" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Place">
+      <EntityTypeMapping TypeName="Concert5904Model.Place">
+        <MappingFragment StoreEntitySet="Place">
+          <ScalarProperty Name="IDDistrict" ColumnName="IDDistrict" />
+          <ScalarProperty Name="NamePlace" ColumnName="NamePlace" />
+          <ScalarProperty Name="IDPlace" ColumnName="IDPlace" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Province">
+      <EntityTypeMapping TypeName="Concert5904Model.Province">
+        <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="NameProvince" ColumnName="NameProvince" />
+          <ScalarProperty Name="IDProvince" ColumnName="IDProvince" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Show">
+      <EntityTypeMapping TypeName="Concert5904Model.Show">
+        <MappingFragment StoreEntitySet="Show">
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="NameShow" ColumnName="NameShow" />
+          <ScalarProperty Name="MatTicket" ColumnName="MatTicket" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="IDPlace" ColumnName="IDPlace" />
+          <ScalarProperty Name="IDBand" ColumnName="IDBand" />
+          <ScalarProperty Name="IDShow" ColumnName="IDShow" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatusOrder">
+      <EntityTypeMapping TypeName="Concert5904Model.StatusOrder">
+        <MappingFragment StoreEntitySet="StatusOrder">
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="Concert5904Model.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="IDType" ColumnName="IDType" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserType">
+      <EntityTypeMapping TypeName="Concert5904Model.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="NameType" ColumnName="NameType" />
+          <ScalarProperty Name="IDType" ColumnName="IDType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zone">
+      <EntityTypeMapping TypeName="Concert5904Model.Zone">
+        <MappingFragment StoreEntitySet="Zone">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="NameZone" ColumnName="NameZone" />
+          <ScalarProperty Name="IDZone" ColumnName="IDZone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
